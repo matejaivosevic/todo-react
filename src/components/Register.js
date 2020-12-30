@@ -17,7 +17,7 @@ const SignupSchema = Yup.object().shape({
     password: Yup.string().min(6, 'You must enter 6 characters at least!').required('Password is required')
 });
 
-const Register = () => {
+const Register = ({history}) => {
     return (
         <div>
             <Formik
@@ -42,7 +42,11 @@ const Register = () => {
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
-                    axios.post('http://localhost:8000/todoapp/register', values);
+                    axios.post('http://localhost:8000/todoapp/register', values).then(() => {
+                        history.push('/');
+                    }).catch(err => {
+                        console.log(err);
+                    });
                 }}
             >
                 {({
