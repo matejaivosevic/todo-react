@@ -2,7 +2,7 @@ import React from 'react'
 import '../assets/styles/register.scss'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios'
+import UserService from '../services/UserService';
 
 const SignupSchema = Yup.object().shape({
     first_name: Yup.string()
@@ -42,7 +42,7 @@ const Register = ({history}) => {
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
-                    axios.post('http://localhost:8000/todoapp/register', values).then(() => {
+                    UserService.register(values).then(() => {
                         history.push('/');
                     }).catch(err => {
                         console.log(err);
