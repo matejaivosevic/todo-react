@@ -8,7 +8,12 @@ export function getLocalStorageItem(key) {
   }
   
   export function setLocalStorageItem(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+    catch (e) {
+      console.log('Local storage is full.');
+    }
   }
   
   export function removeLocalStorageItem(key) {

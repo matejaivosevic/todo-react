@@ -1,52 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../assets/styles/register.scss'
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import UserService from '../services/UserService';
-
-const SignupSchema = Yup.object().shape({
-    first_name: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    last_name: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string().min(6, 'You must enter 6 characters at least!').required('Password is required')
-});
+import AuthService from '../services/AuthService';
+import { SignupSchema } from '../utils/validations'
 
 const Register = ({history}) => {
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleSubmit = values => {
+        AuthService.registerUser(values).then(() => {
+            history.push('/');
+        }).catch(err => {
+            console.log(err.response.data);
+            setErrorMessage(err.response.data);
+        });
+     }
+
     return (
         <div>
             <Formik
-                initialValues={{ email: '', password: '', first_name: '', last_name: '' }}
-                validate={values => {
-                    const errors = {};
-
-                    if (!values.email) {
-                        errors.email = 'Please enter email';
-                    }
-                    if (!values.password) {
-                        errors.password = 'Please enter password';
-                    }
-                    if (!values.first_name) {
-                        errors.first_name = 'Please enter first name';
-                    }
-                    if (!values.last_name) {
-                        errors.last_name = 'Please enter last name';
-                    }
-
-                    return errors;
-                }}
+                initialValues={{ email: '', password: '', firstName: '', lastName: '' }}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
-                    UserService.register(values).then(() => {
-                        history.push('/');
-                    }).catch(err => {
-                        console.log(err);
-                    });
+                    {handleSubmit(values)}
                 }}
             >
                 {({
@@ -70,7 +46,6 @@ const Register = ({history}) => {
                                             onBlur={handleBlur}
                                             value={values.email}
                                             placeholder="Email..."
-                                            required
                                         />
                                         {errors.email && touched.email && errors.email ? (
                                             <span>{errors.email}</span>
@@ -83,7 +58,6 @@ const Register = ({history}) => {
                                             onBlur={handleBlur}
                                             value={values.password}
                                             placeholder="Password..."
-                                            required
                                         />
                                         {errors.password && touched.password && errors.password ? (
                                             <span>{errors.password}</span>
@@ -91,32 +65,31 @@ const Register = ({history}) => {
                                         <label>First name</label>
                                         <input
                                             type="text"
-                                            name="first_name"
+                                            name="firstName"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            value={values.first_name}
+                                            value={values.firstName}
                                             placeholder="First name..."
-                                            required
                                         />
-                                        {errors.first_name && touched.first_name && errors.first_name ? (
-                                            <span>{errors.first_name}</span>
+                                        {errors.firstName && touched.firstName && errors.firstName ? (
+                                            <span>{errors.firstName}</span>
                                         ) : null}
                                         <label>Last name</label>
                                         <input
                                             type="text"
-                                            name="last_name"
+                                            name="lastName"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            value={values.last_name}
+                                            value={values.lastName}
                                             placeholder="Last name..."
-                                            required
                                         />
-                                        {errors.last_name && touched.last_name && errors.last_name ? (
-                                            <span>{errors.last_name}</span>
+                                        {errors.lastName && touched.lastName && errors.lastName ? (
+                                            <span>{errors.lastName}</span>
                                         ) : null}
                                         <button type="submit">
                                             Finish registration
                                              </button>
+                                             <span>{errorMessage}</span>
                                     </div>
                                 </div>
                             </div>
