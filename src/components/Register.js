@@ -3,17 +3,13 @@ import '../assets/styles/register.scss'
 import { Formik } from 'formik';
 import AuthService from '../services/AuthService';
 import { SignupSchema } from '../utils/validations'
+import { connect } from 'react-redux';
+import { registerUserAction } from '../store/actions/authenticationActions';
 
-const Register = ({history}) => {
-    const [errorMessage, setErrorMessage] = useState('');
+const Register = ({dispatch}) => {
 
     const handleSubmit = values => {
-        AuthService.registerUser(values).then(() => {
-            history.push('/');
-        }).catch(err => {
-            console.log(err.response.data);
-            setErrorMessage(err.response.data);
-        });
+        dispatch(registerUserAction(values));
      }
 
     return (
@@ -89,7 +85,6 @@ const Register = ({history}) => {
                                         <button type="submit">
                                             Finish registration
                                              </button>
-                                             <span>{errorMessage}</span>
                                     </div>
                                 </div>
                             </div>
@@ -101,4 +96,5 @@ const Register = ({history}) => {
     );
 }
 
-export default Register;
+
+export default connect()(Register);

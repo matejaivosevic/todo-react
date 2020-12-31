@@ -6,7 +6,7 @@ class AuthService extends BaseAPIService {
     super(props);
   }
 
-  registerUser = (user) => this.apiClient.post(`${ServiceAPI.REGISTER}`, user);
+  registerUser = (user) => this.apiClient.post(`${ServiceAPI.REGISTER}`, user.user);
 }
 
 export default new AuthService();
