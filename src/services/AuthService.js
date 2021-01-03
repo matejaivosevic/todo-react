@@ -5,6 +5,12 @@ import { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } from
 class AuthService extends BaseAPIService {
   constructor(props) {
     super(props);
+
+    const token = this.getToken();
+
+    if (token) {
+      this.attachAuthHeader(token);
+    }
   }
 
   loginUser = async (credentials) => {
@@ -30,7 +36,6 @@ class AuthService extends BaseAPIService {
     this.http.attachHeaders({
       Authorization: `Bearer ${token}`
     });
-    console.log(this.getToken())
   };
 
   getToken = () => {
@@ -42,7 +47,10 @@ class AuthService extends BaseAPIService {
     this.http.removeHeaders(["Authorization"]);
   };
 
-  getLoggedUser = () => this.apiClient.post(ServiceAPI.ME);
+  getLoggedUser = async () => {
+    const data = await this.apiClient.get(ServiceAPI.ME);
+    return data;
+  }
 
   logout = async () => {
     const { data } = await this.apiClient.post(ServiceAPI.LOGOUT);
