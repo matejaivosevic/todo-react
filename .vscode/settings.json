@@ -3,5 +3,10 @@
 
         "markdown"
     ],
-    "emmet.triggerExpansionOnTab": true
+    "emmet.triggerExpansionOnTab": true,
+    "npm.exclude": "",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      },
+    "eslint.validate": ["javascript"]
 }

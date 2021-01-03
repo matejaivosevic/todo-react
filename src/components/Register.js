@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../assets/styles/register.scss'
-import { Formik } from 'formik';
-import AuthService from '../services/AuthService';
+import { Formik } from 'formik'
 import { SignupSchema } from '../utils/validations'
-import { connect } from 'react-redux';
-import { registerUserAction } from '../store/actions/authenticationActions';
+import { connect } from 'react-redux'
+import { registerUserAction } from '../store/actions/authenticationActions'
 
-const Register = ({dispatch}) => {
+const Register = ({ dispatch }) => {
 
     const handleSubmit = values => {
         dispatch(registerUserAction(values));
