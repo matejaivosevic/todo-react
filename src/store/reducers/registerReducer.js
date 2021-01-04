@@ -5,9 +5,9 @@ export default function (state = [], action) {
 
   switch (action.type) {
     case types.REGISTER_USER_SUCCESS:
-      return { ...state, response }
+      return { ...state, response, isAuthenticated: false }
     case types.REGISTER_USER_ERROR:
-      return { ...state, response }
+      return { ...state, response, isAuthenticated: false }
     default:
       return state
   }

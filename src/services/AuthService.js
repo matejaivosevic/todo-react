@@ -38,6 +38,15 @@ class AuthService extends BaseAPIService {
     })
   }
 
+  isUserLoggedIn = () => {
+    const token = this.getToken()
+
+    if (token) {
+      return true
+    }
+    return false
+  }
+
   getToken = () => {
     const token = getLocalStorageItem('jwt-token')
     return token
@@ -51,6 +60,8 @@ class AuthService extends BaseAPIService {
     const data = await this.apiClient.get(ServiceAPI.ME)
     return data
   }
+
+  me = () => this.apiClient.get(ServiceAPI.ME)
 
   logout = async () => {
     const { data } = await this.apiClient.post(ServiceAPI.LOGOUT)
