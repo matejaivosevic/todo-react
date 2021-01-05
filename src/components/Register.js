@@ -6,27 +6,26 @@ import { connect } from 'react-redux'
 import { registerUserAction } from '../store/actions/authenticationActions'
 
 const Register = ({ dispatch }) => {
+  const handleSubmit = values => {
+    dispatch(registerUserAction(values))
+  }
 
-    const handleSubmit = values => {
-        dispatch(registerUserAction(values));
-     }
-
-    return (
+  return (
         <div>
             <Formik
                 initialValues={{ email: '', password: '', firstName: '', lastName: '' }}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
-                    {handleSubmit(values)}
+                  handleSubmit(values)
                 }}
             >
                 {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
                 }) => (
                     <form onSubmit={handleSubmit}>
                         <div className="row">
@@ -42,9 +41,11 @@ const Register = ({ dispatch }) => {
                                             value={values.email}
                                             placeholder="Email..."
                                         />
-                                        {errors.email && touched.email && errors.email ? (
+                                        {errors.email && touched.email && errors.email
+                                          ? (
                                             <span>{errors.email}</span>
-                                        ) : null}
+                                            )
+                                          : null}
                                         <label>Password</label>
                                         <input
                                             type="password"
@@ -54,9 +55,11 @@ const Register = ({ dispatch }) => {
                                             value={values.password}
                                             placeholder="Password..."
                                         />
-                                        {errors.password && touched.password && errors.password ? (
+                                        {errors.password && touched.password && errors.password
+                                          ? (
                                             <span>{errors.password}</span>
-                                        ) : null}
+                                            )
+                                          : null}
                                         <label>First name</label>
                                         <input
                                             type="text"
@@ -66,9 +69,11 @@ const Register = ({ dispatch }) => {
                                             value={values.firstName}
                                             placeholder="First name..."
                                         />
-                                        {errors.firstName && touched.firstName && errors.firstName ? (
+                                        {errors.firstName && touched.firstName && errors.firstName
+                                          ? (
                                             <span>{errors.firstName}</span>
-                                        ) : null}
+                                            )
+                                          : null}
                                         <label>Last name</label>
                                         <input
                                             type="text"
@@ -78,9 +83,11 @@ const Register = ({ dispatch }) => {
                                             value={values.lastName}
                                             placeholder="Last name..."
                                         />
-                                        {errors.lastName && touched.lastName && errors.lastName ? (
+                                        {errors.lastName && touched.lastName && errors.lastName
+                                          ? (
                                             <span>{errors.lastName}</span>
-                                        ) : null}
+                                            )
+                                          : null}
                                         <button type="submit">
                                             Finish registration
                                              </button>
@@ -92,8 +99,7 @@ const Register = ({ dispatch }) => {
                 )}
             </Formik>
         </div >
-    );
+  )
 }
 
-
-export default connect()(Register);
+export default connect()(Register)

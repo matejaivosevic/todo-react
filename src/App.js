@@ -1,22 +1,29 @@
 import React from 'react'
 import './App.css'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Router, Switch } from 'react-router-dom'
+import Login from './components/Login'
+import { ROUTES } from './routes'
+import MyProfile from './components/MyProfile'
 import HeaderBar from './components/HeaderBar'
 import Register from './components/Register'
-import { ROUTES } from './routes'
+import { PublicRoute } from './containers/PublicRoute/PublicRoute'
+import { PrivateRoute } from './containers/PrivateRoute/PrivateRoute'
+import history from './utils/history'
 
 function App () {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <div className="App">
         <HeaderBar />
         <div className="page-body">
           <Switch>
-            <Route path={ROUTES.REGISTER} component={Register}></Route>
+            <PublicRoute path={ROUTES.LOGIN} component={Login}></PublicRoute>
+            <PublicRoute path={ROUTES.REGISTER} component={Register}></PublicRoute>
+            <PrivateRoute path='/me' component={MyProfile}></PrivateRoute>
           </Switch>
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   )
 }
 

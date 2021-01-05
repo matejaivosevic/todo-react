@@ -1,12 +1,10 @@
 {
-    "emmet.excludeLanguages": [
-
-        "markdown"
-    ],
-    "emmet.triggerExpansionOnTab": true,
-    "npm.exclude": "",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-      },
-    "eslint.validate": ["javascript"]
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+  "emmet.triggerExpansionOnTab": true,
+  "npm.exclude": "",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false
 }
