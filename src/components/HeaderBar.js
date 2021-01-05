@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 const HeaderBar = () => {
   const token = useSelector(makeSelectToken())
 
-  const authetnticatedUserButtonsVisibility = {
+  const authenticatedUserButtonsVisibility = {
     visibility: token ? 'hidden' : 'visible'
   }
 
@@ -18,10 +18,10 @@ const HeaderBar = () => {
             <div className="col-md-10 col-lg-10"></div>
             <div className="col-md-2 col-lg-2 col-sm-2">
                 <div className="button-container">
-                    <Link to={ROUTES.REGISTER} style={authetnticatedUserButtonsVisibility}>
+                    <Link to={ROUTES.REGISTER} style={authenticatedUserButtonsVisibility}>
                         <button>Register</button>
                     </Link>
-                    <Link to={ROUTES.LOGIN} style={authetnticatedUserButtonsVisibility}>
+                    <Link to={ROUTES.LOGIN} style={authenticatedUserButtonsVisibility}>
                         <button className="login-button">Login</button>
                     </Link>
                 </div>
