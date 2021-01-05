@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { Router, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch } from 'react-router-dom'
 import Login from './components/Login'
 import { ROUTES } from './routes'
 import MyProfile from './components/MyProfile'
@@ -12,7 +12,7 @@ import history from './utils/history'
 
 function App () {
   return (
-    <Router history={history}>
+    <BrowserRouter history={history}>
       <div className="App">
         <HeaderBar />
         <div className="page-body">
@@ -23,7 +23,7 @@ function App () {
           </Switch>
         </div>
       </div>
-    </Router>
+    </BrowserRouter>
   )
 }
 
