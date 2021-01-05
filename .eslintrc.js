@@ -4,6 +4,7 @@ module.exports = {
     es2021: true
   },
   parserOptions: {
+    "sourceType": "module",
     ecmaFeatures: {
       jsx: true
     },

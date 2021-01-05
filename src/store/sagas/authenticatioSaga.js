@@ -1,6 +1,5 @@
 import { put, call } from 'redux-saga/effects';
 import AuthService from '../../services/AuthService';
-
 import * as types from '../actions'
 
 export function* registerSaga(payload) {
