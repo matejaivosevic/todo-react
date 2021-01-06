@@ -6,8 +6,10 @@ import reportWebVitals from './reportWebVitals'
 import './i18n'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
+import history from './utils/history'
 
-const store = configureStore()
+const initialState = {}
+const store = configureStore(initialState, history)
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,7 @@
 import BaseAPIService from './BaseAPIService'
 import ServiceAPI from './config'
 import { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } from '../utils/localStorage'
+import { push } from 'connected-react-router'
 
 class AuthService extends BaseAPIService {
   constructor (props) {
@@ -36,6 +37,7 @@ class AuthService extends BaseAPIService {
     this.http.attachHeaders({
       Authorization: `Bearer ${token}`
     })
+    push('/register')
   }
 
   isUserLoggedIn = () => {
@@ -64,9 +66,7 @@ class AuthService extends BaseAPIService {
   me = () => this.apiClient.get(ServiceAPI.ME)
 
   logout = async () => {
-    const { data } = await this.apiClient.post(ServiceAPI.LOGOUT)
     this.destroySession()
-    return data
   };
 
   destroySession = () => {

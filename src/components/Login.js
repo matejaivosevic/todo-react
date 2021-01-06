@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import '../assets/styles/login.scss'
 import { loginUserAction } from '../store/actions/authenticationActions'
 import { LoginSchema } from '../utils/validations'
+import { useHistory } from 'react-router-dom'
+import { ROUTES } from '../routes'
 
 const Login = ({ dispatch }) => {
-  const handleSubmit = values => {
-    dispatch(loginUserAction(values))
+  const handleSubmit = (user) => {
+    dispatch(loginUserAction(user))
   }
+  const history = useHistory()
+
+  const { success } = useSelector(state => ({
+    success: state.login.auth
+  }))
+
+  useEffect(() => {
+    if (success) {
+      history.push(ROUTES.ME)
+    }
+  }, [success])
 
   return (
     <div>
