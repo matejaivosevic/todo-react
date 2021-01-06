@@ -11,40 +11,14 @@ export default function login (state = initialState, action) {
 
   switch (action.type) {
     case types.FETCH_AUTHENTICATED_USER_SUCCESS:
-      return { ...state, response, isAuthenticated: true, token: response.token || initialState.token }
+      return { ...state, response, isAuthenticated: true, token: response.token || initialState.token, auth: true }
     case types.LOGIN_USER_SUCCESS:
-      return { ...state, response, isAuthenticated: true, token: response.token || initialState.token }
+      return { ...state, response, isAuthenticated: true, token: response.token || initialState.token, auth: true }
     case types.LOGOUT_USER_SUCCESS:
-      return { ...state, response, isAuthenticated: false }
+      return { ...state, response, isAuthenticated: false, token: null }
     case types.LOGIN_USER_ERROR:
-      return { ...state, response, isAuthenticated: false }
+      return { ...state, response, isAuthenticated: false, token: null }
     default:
       return state
   }
 }
-
-/* export const login = (state = initialState, action) =>
-  produce(state, draft => {
-    switch (action.type) {
-      case types.FETCH_AUTHENTICATED_USER_SUCCESS:
-        draft.user = action.user
-        break
-      case types.LOGIN_USER_SUCCESS:
-        draft.user = action.user
-        draft.token = action.token
-        break
-      case types.LOGOUT_USER_SUCCESS:
-        draft.user = null
-        draft.token = null
-        break
-      case types.LOGIN_USER_ERROR:
-        draft.user = null
-        draft.token = null
-        break
-      case types.SET_TOKEN:
-        draft.token = action.token
-        break
-      default:
-        return state
-    }
-  }) */

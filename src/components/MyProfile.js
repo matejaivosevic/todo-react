@@ -25,6 +25,7 @@ const MyProfile = () => {
   }
 
   const deleteItem = id => {
+    console.log(id)
     dispatch(deleteTodo(id))
   }
 

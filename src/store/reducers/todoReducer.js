@@ -30,8 +30,7 @@ export const todoReducer = (state = initialTodoState, action) => {
       return { ...state, isAuthenticated: true }
     }
     case types.ADD_TODO_SUCCESS: {
-      const newTodos = state.todos.concat(payload.response.data)
-      return { ...state, isAuthenticated: true, todos: newTodos }
+      return { ...state, isAuthenticated: true, todos: payload.response.data }
     }
     case types.HANDLE_COMPLETE_SUCCESS: {
       return { ...state, todos: payload.response.data, isAuthenticated: true }

@@ -4,10 +4,13 @@ import { Formik } from 'formik'
 import { SignupSchema } from '../utils/validations'
 import { connect } from 'react-redux'
 import { registerUserAction } from '../store/actions/authenticationActions'
+import { useHistory } from 'react-router-dom'
 
 const Register = ({ dispatch }) => {
+  const history = useHistory()
   const handleSubmit = values => {
     dispatch(registerUserAction(values))
+    history.push('/login')
   }
 
   return (
