@@ -23,7 +23,7 @@ const HeaderBar = ({ dispatch }) => {
   const handleClick = () => {
     dispatch(logoutUserAction())
     setIsAuth(false)
-    history.push('/login')
+    history.push(ROUTES.LOGIN)
   }
 
   return (

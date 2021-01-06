@@ -15,10 +15,9 @@ function App () {
         <HeaderBar />
         <div className="page-body">
           <Switch>
-            <Route exact path='/' component={MyProfile}></Route>
             <Route path={ROUTES.LOGIN} component={Login}></Route>
             <PublicRoute path={ROUTES.REGISTER} component={Register}></PublicRoute>
-            <Route path='/me' component={MyProfile}></Route>
+            <Route path={ROUTES.ME} component={MyProfile}></Route>
           </Switch>
         </div>
       </div>

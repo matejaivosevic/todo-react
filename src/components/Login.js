@@ -5,6 +5,7 @@ import '../assets/styles/login.scss'
 import { loginUserAction } from '../store/actions/authenticationActions'
 import { LoginSchema } from '../utils/validations'
 import { useHistory } from 'react-router-dom'
+import { ROUTES } from '../routes'
 
 const Login = ({ dispatch }) => {
   const handleSubmit = (user) => {
@@ -18,7 +19,7 @@ const Login = ({ dispatch }) => {
 
   useEffect(() => {
     if (success) {
-      history.push('/me')
+      history.push(ROUTES.ME)
     }
   }, [success])
 
