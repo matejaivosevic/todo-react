@@ -26,3 +26,10 @@ export function fetchAuthenticatedUserSuccess (user) {
     user
   }
 }
+
+export function setToken (token) {
+  return {
+    type: types.SET_TOKEN,
+    token
+  }
+}

@@ -6,8 +6,8 @@ import { loginUserAction } from '../store/actions/authenticationActions'
 import { LoginSchema } from '../utils/validations'
 
 const Login = ({ dispatch }) => {
-  const handleSubmit = values => {
-    dispatch(loginUserAction(values))
+  const handleSubmit = (user) => {
+    dispatch(loginUserAction(user))
   }
 
   return (

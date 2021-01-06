@@ -1,0 +1,31 @@
+.item {
+  padding: 10px;
+  border: 1px solid gray;
+  margin-bottom: 1.6rem;
+  width: 100%;
+  border-radius: 10px;
+  padding: 1rem;
+
+  h5 {
+    font-size: medium;
+  }
+
+  .delete-section {
+    span {
+      color: #c27;
+      cursor: pointer;
+    }
+  }
+
+  .edit-section {
+    span {
+      border: .5px solid yellowgreen;
+      color: white;
+      background-color: rgb(152, 155, 14);
+      padding: 5px ;
+      font-size: small;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

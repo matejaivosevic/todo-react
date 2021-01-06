@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux'
-import { login } from './loginReducer'
+import login from './loginReducer'
 import register from './registerReducer'
-import { connectRouter } from 'connected-react-router'
-import history from '../../utils/history'
+import { todoReducer } from './todoReducer'
 
 const rootReducer = combineReducers({
-  login, register, router: connectRouter(history)
+  login, register, todoReducer
 })
 
 export default rootReducer

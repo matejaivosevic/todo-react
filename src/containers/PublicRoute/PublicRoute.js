@@ -18,7 +18,7 @@ export function PublicRoute ({
       render={props =>
         isAuth
           ? (
-          <Redirect to="/dashboard" />
+          <Redirect to="/me" />
             )
           : (
           <Component {...props} />

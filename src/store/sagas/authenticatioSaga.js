@@ -1,7 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import AuthService from '../../services/AuthService'
 import { fetchAuthenticatedUserSuccess } from '../actions/authenticationActions'
-import { push } from 'connected-react-router'
 
 import * as types from '../actions'
 
@@ -9,7 +8,6 @@ export function * loginSaga (payload) {
   try {
     const response = yield call(AuthService.loginUser, payload)
     yield put({ type: types.LOGIN_USER_SUCCESS, response })
-    yield put(push('/me'))
   } catch (error) {
     yield put({ type: types.LOGIN_USER_ERROR, error })
   }

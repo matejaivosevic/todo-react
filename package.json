@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "connected-react-router": "^6.8.0",
     "formik": "^2.2.6",
+    "hookrouter": "^1.2.5",
     "i18next": "^19.8.4",
     "node-sass": "4.14.1",
     "prop-types": "^15.7.2",

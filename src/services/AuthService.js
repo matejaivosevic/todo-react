@@ -66,9 +66,7 @@ class AuthService extends BaseAPIService {
   me = () => this.apiClient.get(ServiceAPI.ME)
 
   logout = async () => {
-    const { data } = await this.apiClient.post(ServiceAPI.LOGOUT)
     this.destroySession()
-    return data
   };
 
   destroySession = () => {
